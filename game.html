@@ -133,12 +133,6 @@ function openCard(card, index) {
 
 function closePopup()
 {
-  function nextAction() {
-  if (current >= 3) {
-    // last photo → next page
-    window.location.href = "final.html";
-  } else {
-    // first 2 photos → just close popup
     document.getElementById("popup").style.display = "none";
   }
 }
