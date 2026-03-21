@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial;
+    }
+
+    /* Background video */
+    video {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Center box */
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.5);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      color: white;
+    }
+
+    input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: hotpink;
+      border: none;
+      color: white;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎥 Background Video -->
+<video autoplay muted loop>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<!-- 🎵 Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="box">
+  <h2>Enter Secret Password 💖</h2>
+  <input type="password" id="pass" placeholder="Enter password">
+  <br>
+  <button onclick="check()">Unlock</button>
+  <p id="error" style="color:pink;"></p>
+</div>
+
+<script>
+function check() {
+  let p = document.getElementById("pass").value;
+
+  if(p === "kishnaa523") {
+    window.location.href = "birthday.html";
+  } else {
+    document.getElementById("error").innerText = "Wrong Password 😢";
+  }
+}
+</script>
+
+</body>
+</html>
