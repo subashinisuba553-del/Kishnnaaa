@@ -7,32 +7,48 @@
     body {
       margin: 0;
       font-family: Arial;
-      background: url('bg4.jpeg') no-repeat center center/cover;
-      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+
+      background: url('bg4.jpeg') no-repeat center center;
+      background-size: cover;
     }
 
     h1 {
       text-align: center;
       color: white;
-      margin-top: 30px;
-      font-size: 40px;
+      margin-top: 20px;
+      font-size: 35px;
       text-shadow: 2px 2px 5px black;
     }
 
-    .right-img {
-      position: absolute;
-      right: 0;
-      top: 0;
+    /* MAIN LAYOUT */
+    .container {
+      display: flex;
+      flex: 1;
+    }
+
+    .left {
       width: 50%;
+    }
+
+    .right {
+      width: 50%;
+    }
+
+    .right img {
+      width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
+    /* BUTTONS */
     .buttons {
       position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 40px;
+      width: 100%;
+      text-align: center;
     }
 
     button {
@@ -52,7 +68,7 @@
       background: lightgray;
     }
 
-    /* POPUP STYLE */
+    /* POPUP */
     .popup-msg {
       position: fixed;
       top: 50%;
@@ -77,7 +93,13 @@
 
 <h1>Will you remember me ? always 🙂</h1>
 
-<img src="side.jpeg" class="right-img">
+<div class="container">
+  <div class="left"></div>
+
+  <div class="right">
+    <img src="side.jpeg">
+  </div>
+</div>
 
 <div class="buttons">
   <button class="yes" onclick="goNext()">Yes I Do 💖</button>
@@ -90,7 +112,6 @@
 <div id="msg3" class="popup-msg">Say i do 😁❤️</div>
 
 <script>
-
 function showMessages() {
   let m1 = document.getElementById("msg1");
   let m2 = document.getElementById("msg2");
@@ -116,7 +137,6 @@ function showMessages() {
 function goNext(){
   window.location.href = "page5.html";
 }
-
 </script>
 
 </body>
