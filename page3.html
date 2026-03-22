@@ -1,169 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Find the Special Cards 💖</title>
-
+  <title>Memories 💖</title>
   <style>
     body {
-      text-align: center;
+      margin: 0;
       font-family: Arial;
-      background: url('bg.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      top: 0;
-      left: 0;
-      z-index: -1;
+      background: url('bg.jpeg') no-repeat center center/cover;
     }
 
     h1 {
+      text-align: center;
       color: white;
-      text-shadow: 0 0 10px pink;
+      margin-top: 20px;
+      text-shadow: 2px 2px 5px black;
     }
 
     .container {
       display: grid;
-      grid-template-columns: repeat(3, 180px);
-      gap: 25px;
-      justify-content: center;
-      margin-top: 50px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 40px;
     }
 
     .card {
-      width: 180px;
       height: 180px;
-      background: pink;
+      background: rgba(255,255,255,0.2);
+      border-radius: 15px;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      border-radius: 20px;
-      font-size: 22px;
+      color: white;
+      font-size: 20px;
+      backdrop-filter: blur(5px);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
-    /* FULL SCREEN POPUP */
+    /* OPEN CARD FULL SCREEN */
     .popup {
       position: fixed;
-      bottom: 0;
+      top: 0;
       left: 0;
       width: 100%;
-      height: 50%;
-      background: rgba(0,0,0,0.9);
+      height: 100%;
+      background: green;
       display: none;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
+      color: white;
+      text-align: center;
+      padding: 20px;
     }
 
     .popup img {
-      width: 200px;
+      width: 250px;
       border-radius: 15px;
+      margin-bottom: 20px;
     }
 
     .popup p {
-      color: white;
       font-size: 20px;
-      margin-top: 15px;
+      white-space: pre-line;
     }
 
     .closeBtn {
-      margin-top: 15px;
-      padding: 8px 20px;
-      background: hotpink;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: white;
+      color: green;
       border: none;
-      border-radius: 20px;
-      color: white;
+      border-radius: 10px;
       cursor: pointer;
     }
 
-    #continueBtn {
-      display: none;
-      margin-top: 30px;
-      background: hotpink;
-      color: white;
+    .continueBtn {
+      display: block;
+      margin: 20px auto;
       padding: 12px 25px;
-      border: none;
-      border-radius: 25px;
       font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: pink;
       cursor: pointer;
-      animation: glow 1s infinite alternate;
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 10px pink; }
-      to { box-shadow: 0 0 20px red; }
     }
   </style>
 </head>
 
 <body>
 
-<h1>Find 3 Special Cards 💌</h1>
+<h1>Our Memories 💖</h1>
 
 <div class="container">
-  <div class="card" onclick="openCard(false)">💌</div>
-  <div class="card" onclick="openCard(true, 'pic1.jpeg', 'My Love 💖')">💌</div>
-  <div class="card" onclick="openCard(false)">💌</div>
-  <div class="card" onclick="openCard(true, 'pic2.jpeg', 'My Happiness 😍')">💌</div>
-  <div class="card" onclick="openCard(false)">💌</div>
-  <div class="card" onclick="openCard(true, 'pic3.jpeg', 'Forever Us 💍')">💌</div>
+
+  <div class="card" onclick="openCard(1)">Card 1</div>
+  <div class="card" onclick="openCard(2)">Card 2</div>
+  <div class="card" onclick="openCard(3)">Card 3</div>
+
+  <div class="card">💖</div>
+  <div class="card">💖</div>
+  <div class="card">💖</div>
+
 </div>
 
 <!-- POPUP -->
-<div class="popup" id="popup">
-  <img id="popupImg">
-  <p id="popupMsg"></p>
-  <button class="closeBtn" onclick="closePopup()">Close 💖</button>
+<div id="popup" class="popup">
+  <img id="cardImg" src="">
+  <p id="cardText"></p>
+  <button class="closeBtn" onclick="closeCard()">Close</button>
 </div>
 
-<button id="continueBtn" onclick="goNextPage()">Continue 💖</button>
+<button class="continueBtn" onclick="goNext()">Continue 💖</button>
 
 <script>
+function openCard(num) {
+  let img = document.getElementById("cardImg");
+  let text = document.getElementById("cardText");
 
-let found = 0;
-let totalSpecial = 3;
-
-function openCard(isSpecial, img = "", msg = "") {
-
-  if (isSpecial) {
-    document.getElementById("popup").style.display = "flex";
-    document.getElementById("popupImg").src = img;
-    document.getElementById("popupMsg").innerText = msg;
-
-    found++;
-
-    if (found === totalSpecial) {
-      document.getElementById("continueBtn").style.display = "block";
-    }
-
-  } else {
-    alert("Try again 😅");
+  if(num == 1){
+    img.src = "pic1.jpeg";
+    text.innerText = `I dont have 1st meet pic
+So 2nd meet pic 😝`;
   }
+
+  if(num == 2){
+    img.src = "pic2.jpeg";
+    text.innerText = `scoldings ,bond, fights,
+good time, tears, movie,
+bike ride all in one day`;
+  }
+
+  if(num == 3){
+    img.src = "pic3.jpeg";
+    text.innerText = `Surprise meet
+Fav one 🤗❤️‍🩹`;
+  }
+
+  document.getElementById("popup").style.display = "flex";
 }
 
-function closePopup() {
+function closeCard(){
   document.getElementById("popup").style.display = "none";
 }
 
-function goNextPage() {
+function goNext(){
   window.location.href = "page4.html";
 }
-
 </script>
 
 </body>
