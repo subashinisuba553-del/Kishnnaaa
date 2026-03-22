@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Memory Question 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: url('bg5.jpeg') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* HEART ANIMATION */
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(100vh);}
+      100% {transform: translateY(-10vh);}
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-top: 80px;
+      font-size: 35px;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .box {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* NEON INPUT */
+    input {
+      padding: 15px;
+      font-size: 20px;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      background: black;
+      color: #0ff;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: pink;
+      cursor: pointer;
+    }
+
+    .error {
+      color: white;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Which year we started to talk? 💖</h1>
+
+<div class="box">
+  <input type="text" id="answer" placeholder="Enter Year...">
+  <br>
+  <button onclick="checkAnswer()">Submit 💕</button>
+  <div id="msg" class="error"></div>
+</div>
+
+<script>
+
+function checkAnswer(){
+  let ans = document.getElementById("answer").value;
+
+  if(ans == "2022"){
+    window.location.href = "page6.html";
+  } else {
+    document.getElementById("msg").innerText = "Wrong answer 😝 Try again!";
+  }
+}
+
+/* HEARTS */
+function createHeart(){
+  let heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerText = "💖";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 10 + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
+setInterval(createHeart, 300);
+
+</script>
+
+</body>
+</html>
