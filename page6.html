@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Special Messages 💜</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: url('bg6.jpeg') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    /* POPUP STYLE */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #2b0033;
+      color: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      font-size: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px #ff00ff, 0 0 30px #ff00ff;
+      transition: 0.4s;
+      width: 80%;
+    }
+
+    .show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .continueBtn {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: pink;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- POPUPS -->
+<div id="p1" class="popup">I know how much i owe you...and admire you 💜</div>
+
+<div id="p2" class="popup">I can understand you at all situation never judge 💖</div>
+
+<div id="p3" class="popup">words cant describe how much i like you..you know anyways 😇😜</div>
+
+<div id="p4" class="popup">I will stand beside you in all ways always ❤️‍🩹</div>
+
+<div id="p5" class="popup">Be happy gain knowledge ...smile 😊</div>
+
+<div id="p6" class="popup">wanna see eeeeeeee face of urs...prime kishnaaa 😝 suits u well</div>
+
+<button class="continueBtn" onclick="goNext()">Continue 💖</button>
+
+<script>
+
+function showSequence(){
+  let p1 = document.getElementById("p1");
+  let p2 = document.getElementById("p2");
+  let p3 = document.getElementById("p3");
+  let p4 = document.getElementById("p4");
+  let p5 = document.getElementById("p5");
+  let p6 = document.getElementById("p6");
+
+  p1.classList.add("show");
+
+  setTimeout(()=>{ p1.classList.remove("show"); p2.classList.add("show"); },2000);
+  setTimeout(()=>{ p2.classList.remove("show"); p3.classList.add("show"); },4000);
+  setTimeout(()=>{ p3.classList.remove("show"); p4.classList.add("show"); },6000);
+  setTimeout(()=>{ p4.classList.remove("show"); p5.classList.add("show"); },8000);
+  setTimeout(()=>{ p5.classList.remove("show"); p6.classList.add("show"); },10000);
+  setTimeout(()=>{ p6.classList.remove("show"); },12000);
+}
+
+function goNext(){
+  window.location.href = "page7.html";
+}
+
+window.onload = showSequence;
+
+</script>
+
+</body>
+</html>
