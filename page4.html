@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Will You Remember Me? 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: url('bg4.jpeg') no-repeat center center/cover;
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-top: 30px;
+      font-size: 40px;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    .right-img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: pink;
+    }
+
+    .no {
+      background: lightgray;
+    }
+
+    /* POPUP STYLE */
+    .popup-msg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: black;
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      font-size: 22px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Will you remember me ? always 🙂</h1>
+
+<img src="side.jpeg" class="right-img">
+
+<div class="buttons">
+  <button class="yes" onclick="goNext()">Yes I Do 💖</button>
+  <button class="no" onclick="showMessages()">No, I won't 💔</button>
+</div>
+
+<!-- POPUPS -->
+<div id="msg1" class="popup-msg">Dont forgot me 🥲🫠</div>
+<div id="msg2" class="popup-msg">My bond is so special 💖</div>
+<div id="msg3" class="popup-msg">Say i do 😁❤️</div>
+
+<script>
+
+function showMessages() {
+  let m1 = document.getElementById("msg1");
+  let m2 = document.getElementById("msg2");
+  let m3 = document.getElementById("msg3");
+
+  m1.classList.add("show");
+
+  setTimeout(() => {
+    m1.classList.remove("show");
+    m2.classList.add("show");
+  }, 1500);
+
+  setTimeout(() => {
+    m2.classList.remove("show");
+    m3.classList.add("show");
+  }, 3000);
+
+  setTimeout(() => {
+    m3.classList.remove("show");
+  }, 4500);
+}
+
+function goNext(){
+  window.location.href = "page5.html";
+}
+
+</script>
+
+</body>
+</html>
