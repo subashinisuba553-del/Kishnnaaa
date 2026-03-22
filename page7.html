@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final Question 💛</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: url('bg7.jpeg') no-repeat center center/cover;
+    }
+
+    .box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 0, 0.9);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px yellow;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: black;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: pink;
+    }
+
+    .no {
+      background: lightgray;
+    }
+
+    /* POPUPS */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: black;
+      color: white;
+      padding: 25px;
+      border-radius: 15px;
+      font-size: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>Will you always be my constant friend? 💛</h1>
+
+  <button class="yes" onclick="goNext()">Yes I Do 💖</button>
+  <button class="no" onclick="showMsg()">No 💔</button>
+</div>
+
+<!-- POPUPS -->
+<div id="m1" class="popup">Y u hate me 🥲</div>
+<div id="m2" class="popup">4yrs u know still you hate me 💔</div>
+
+<script>
+
+function showMsg(){
+  let m1 = document.getElementById("m1");
+  let m2 = document.getElementById("m2");
+
+  m1.classList.add("show");
+
+  setTimeout(()=>{
+    m1.classList.remove("show");
+    m2.classList.add("show");
+  },1500);
+
+  setTimeout(()=>{
+    m2.classList.remove("show");
+  },3000);
+}
+
+function goNext(){
+  window.location.href = "page8.html";
+}
+
+</script>
+
+</body>
+</html>
