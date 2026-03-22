@@ -8,47 +8,26 @@
       margin: 0;
       font-family: Arial;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
 
       background: url('bg4.jpeg') no-repeat center center;
       background-size: cover;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
     }
 
     h1 {
-      text-align: center;
+      margin-top: 40px;
       color: white;
-      margin-top: 20px;
-      font-size: 35px;
+      font-size: 36px;
+      text-align: center;
       text-shadow: 2px 2px 5px black;
     }
 
-    /* MAIN LAYOUT */
-    .container {
-      display: flex;
-      flex: 1;
-    }
-
-    .left {
-      width: 50%;
-    }
-
-    .right {
-      width: 50%;
-    }
-
-    .right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* BUTTONS */
     .buttons {
-      position: absolute;
-      bottom: 40px;
-      width: 100%;
-      text-align: center;
+      margin-bottom: 60px;
     }
 
     button {
@@ -93,14 +72,6 @@
 
 <h1>Will you remember me ? always 🙂</h1>
 
-<div class="container">
-  <div class="left"></div>
-
-  <div class="right">
-    <img src="side.jpeg">
-  </div>
-</div>
-
 <div class="buttons">
   <button class="yes" onclick="goNext()">Yes I Do 💖</button>
   <button class="no" onclick="showMessages()">No, I won't 💔</button>
@@ -141,3 +112,5 @@ function goNext(){
 
 </body>
 </html>
+     
+ 
