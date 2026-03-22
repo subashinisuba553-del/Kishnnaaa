@@ -1,153 +1,152 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Our Memory 💖</title>
+  <title>Find the Special Cards 💖</title>
 
   <style>
     body {
-      margin: 0;
-      font-family: Arial;
-      background: url('bg.jpeg') no-repeat center/cover;
       text-align: center;
-      color: white;
+      font-family: Arial;
+      background: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: -1;
     }
 
     h1 {
-      margin-top: 30px;
-      text-shadow: 0 0 10px lightgreen;
+      color: white;
+      text-shadow: 0 0 10px pink;
     }
 
-    .grid {
+    .container {
       display: grid;
-      grid-template-columns: repeat(3, 100px);
+      grid-template-columns: repeat(3, 120px);
       gap: 20px;
       justify-content: center;
       margin-top: 50px;
     }
 
     .card {
-      width: 100px;
+      width: 120px;
       height: 120px;
-      background: #1f7a5c;
-      border-radius: 15px;
+      background: pink;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 30px;
-      transition: 0.3s;
+      border-radius: 15px;
+      font-size: 18px;
+      overflow: hidden;
+      transition: 0.5s;
     }
 
     .card:hover {
       transform: scale(1.1);
     }
 
-    .card.open {
-      background: #fff;
-      color: black;
-    }
-
-    /* popup */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.8);
-      padding: 20px;
-      border-radius: 15px;
-      text-align: center;
-    }
-
-    .popup img {
-      width: 200px;
+    .card img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
       border-radius: 10px;
     }
 
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      border: none;
+    .msg {
+      font-size: 12px;
+      color: white;
+      margin-top: 5px;
+    }
+
+    #continueBtn {
+      display: none;
+      margin-top: 40px;
       background: hotpink;
       color: white;
-      border-radius: 10px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      font-size: 18px;
+      cursor: pointer;
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px pink; }
+      to { box-shadow: 0 0 20px red; }
     }
   </style>
+
 </head>
 
 <body>
 
-<h1>Find Our Special Memory 💚</h1>
+<h1>Find 3 Special Cards 💌</h1>
 
-<div class="grid">
-  <div class="card" onclick="openCard(this,0)">💚</div>
-  <div class="card" onclick="openCard(this,1)">💚</div>
-  <div class="card" onclick="openCard(this,2)">💚</div>
-  <div class="card" onclick="openCard(this,3)">💚</div>
-  <div class="card" onclick="openCard(this,4)">💚</div>
-  <div class="card" onclick="openCard(this,5)">💚</div>
+<div class="container">
+
+  <div class="card" onclick="openCard(this, false)">💌</div>
+
+  <div class="card" onclick="openCard(this, true, 'pic1.jpg', 'My Love 💖')">💌</div>
+
+  <div class="card" onclick="openCard(this, false)">💌</div>
+
+  <div class="card" onclick="openCard(this, true, 'pic2.jpg', 'My Happiness 😍')">💌</div>
+
+  <div class="card" onclick="openCard(this, false)">💌</div>
+
+  <div class="card" onclick="openCard(this, true, 'pic3.jpg', 'Forever Us 💍')">💌</div>
+
 </div>
 
-<!-- popup -->
-<div class="popup" id="popup">
-  <img id="popup-img">
-  <p id="popup-text"></p>
-  <button onclick="closePopup()">Next 💖</button>
-</div>
+<button id="continueBtn" onclick="goNextPage()">Continue 💖</button>
 
 <script>
-let opened = [];
 
-// which cards are correct (3 cards)
-let correctCards = [1, 3, 5];
+let found = 0;
+let totalSpecial = 3;
 
-// images + messages
-let images = ["pic1.jpeg", "pic2.jpeg", "pic3.jpeg"];
-let messages = [
-  "💖 Our first memory together 😍",
-  "💖 This day was so special 💫",
-  "💖 My most favourite picture ❤️"
-];
+function openCard(card, isSpecial, img = "", msg = "") {
 
-let current = 0;
+  if (card.classList.contains("opened")) return;
 
-function openCard(card, index) {
-  if (!card.classList.contains("open")) {
-    card.classList.add("open");
-    card.innerHTML = "😍";
-  }
+  card.classList.add("opened");
 
-  if (correctCards.includes(index)) {
-    if (!opened.includes(index)) {
-      opened.push(index);
+  if (isSpecial) {
+    card.innerHTML = `
+      <div>
+        <img src="${img}">
+        <div class="msg">${msg}</div>
+      </div>
+    `;
 
-      document.getElementById("popup-img").src = images[current];
-      document.getElementById("popup-text").innerText = messages[current];
-      document.getElementById("popup").style.display = "block";
+    found++;
 
-      current++;
+    if (found === totalSpecial) {
+      document.getElementById("continueBtn").style.display = "block";
     }
+
+  } else {
+    card.innerHTML = "Try again 😅";
   }
 }
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
+function goNextPage() {
+  window.location.href = "page4.html";
 }
-  
-}
-</script>
+
 </script>
 
 </body>
 </html>
-    
-    
-   
-    
-
- 
-
-
-  
-  
